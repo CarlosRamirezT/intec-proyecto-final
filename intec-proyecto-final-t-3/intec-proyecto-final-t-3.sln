@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "intec-proyecto-final-t-3", "intec-proyecto-final-t-3\intec-proyecto-final-t-3.csproj", "{316F5D61-A68B-4597-8A89-4028CA0BFDAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{316F5D61-A68B-4597-8A89-4028CA0BFDAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316F5D61-A68B-4597-8A89-4028CA0BFDAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316F5D61-A68B-4597-8A89-4028CA0BFDAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316F5D61-A68B-4597-8A89-4028CA0BFDAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C04C3EC6-6DEE-4A72-BEB3-B8202A3B7BBC}
+	EndGlobalSection
+EndGlobal
