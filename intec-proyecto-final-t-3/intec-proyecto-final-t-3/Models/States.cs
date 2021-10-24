@@ -18,5 +18,7 @@ namespace intec_proyecto_final_t_3.Models
         [Display(Name = "Country")]
         [ForeignKey("Countries")]
         public Int32 CountryId { get; set; }
+
+        public virtual Countries Country { get; set; }
     }
 }

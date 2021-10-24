@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using intec_proyecto_final_t_3.Models;
+using System.Collections;
 
 namespace intec_proyecto_final_t_3.Controllers
 {
@@ -77,6 +78,7 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Country = new SelectList(_context.Countries, "Id", "Name", states.CountryId);
             return View(states);
         }
 
@@ -96,6 +98,7 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 try
                 {
+                    states.CountryId = int.Parse(HttpContext.Request.Form["Country"]);
                     _context.Update(states);
                     await _context.SaveChangesAsync();
                 }
