@@ -26,7 +26,7 @@ namespace intec_proyecto_final_t_3
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<CountriesDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<GeneralDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

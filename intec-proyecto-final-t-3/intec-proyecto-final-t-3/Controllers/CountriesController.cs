@@ -11,9 +11,9 @@ namespace intec_proyecto_final_t_3.Controllers
 {
     public class CountriesController : Controller
     {
-        private readonly CountriesDbContext _context;
+        private readonly GeneralDbContext _context;
 
-        public CountriesController(CountriesDbContext context)
+        public CountriesController(GeneralDbContext context)
         {
             _context = context;
         }
