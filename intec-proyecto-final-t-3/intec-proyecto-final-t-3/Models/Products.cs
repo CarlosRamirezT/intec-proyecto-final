@@ -15,7 +15,7 @@ namespace intec_proyecto_final_t_3.Models
         public String Name { get; set; }
 
         [Display(Name = "Cost")]
-        public double cost { get; set; }
+        public double Cost { get; set; }
 
         [Required]
         [Display(Name = "Price")]

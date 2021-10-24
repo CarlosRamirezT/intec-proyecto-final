@@ -10,7 +10,7 @@ using intec_proyecto_final_t_3.Models;
 namespace intec_proyecto_final_t_3.Migrations
 {
     [DbContext(typeof(GeneralDbContext))]
-    [Migration("20211024171520_InitialCreation")]
+    [Migration("20211024174703_InitialCreation")]
     partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

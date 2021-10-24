@@ -43,7 +43,7 @@ namespace intec_proyecto_final_t_3.Models
         [Required]
         [Display(Name = "Invoice")]
         [ForeignKey("Invoices")]
-        public Int32 CustomerId { get; set; }
+        public Int32 InvoiceId { get; set; }
 
         [Required]
         [Display(Name = "Product")]
