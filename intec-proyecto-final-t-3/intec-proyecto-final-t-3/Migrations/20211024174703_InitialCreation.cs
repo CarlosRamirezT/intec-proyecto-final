@@ -151,6 +151,84 @@ namespace intec_proyecto_final_t_3.Migrations
                 {
                     table.PrimaryKey("PK_States", x => x.Id);
                 });
+
+            migrationBuilder.Sql(@"
+                create or replace view ""StatesView"" as (
+                    select
+                    states.""Id"",
+                    states.""Name"",
+                    countries.""Name"" as ""Country""
+                    from public.""States"" as states
+                    join public.""Countries"" as countries on countries.""Id"" = states.""CountryId""
+                );
+            ");
+
+            migrationBuilder.Sql(@"
+                create or replace view ""CitiesView"" as (
+                    select
+                    cities.""Id"",
+                    cities.""Name"",
+                    states.""Name"" as ""State""
+                    from public.""Cities"" as cities
+                    join public.""States"" as states on states.""Id"" = cities.""StateId""
+                );      
+            ");
+
+            migrationBuilder.Sql(@"
+                create or replace view ""CustomersView"" as(
+                    select
+                    customer.""Id"",
+                    customer.""Name"",
+                    customer.""Street"",
+                    customer.""Street2"",
+                    city.""Name"" as ""City"",
+                    state.""Name"" as ""State"",
+                    customer.""ZipCode"",
+                    country.""Name"" as ""Country"",
+                    customer.""Phone"",
+                    customer.""Mobile"",
+                    customer.""Email"",
+                    customer.""Note""
+                    from public.""Customers"" as customer
+                    join public.""Cities"" as city on customer.""CityId"" = city.""Id""
+	                join public.""States"" as state on customer.""StateId"" = state.""Id""
+	                join public.""Countries"" as country on customer.""CountryId"" = country.""Id""
+                );
+            ");
+
+            migrationBuilder.Sql(@"
+                create or replace view ""InvoicesListView"" as(
+                    select
+                    invoice.""Id"",
+                    customer.""Name"" as ""Customer"",
+                    invoice.""DateInvoice"",
+                    invoice.""DateDue"",
+                    states.""Name"" as ""State"",
+                    (select sum(""Subtotal"") from public.""InvoicesLines"" where ""InvoiceId"" = invoice.""Id"") as ""AmountUntaxed"",
+	                (""AmountUntaxed"" * 0.18) as ""AmountTax"",
+	                (""AmountUntaxed"" + ""AmountTax"") as ""AmountTotal"",
+	                (select sum(""Amount"") from public.""Payments"" where ""InvoiceId"" = invoice.""Id"") as ""AmountPaid"",
+	                (select coalesce (""AmountTotal"" - (select sum(""Amount"") from public.""Payments"" where ""InvoiceId"" = invoice.""Id""), ""AmountTotal"")) as ""AmountDue""
+	                from public.""Invoices"" as invoice
+                    join public.""Customers"" as customer on customer.""Id"" = invoice.""CustomerId""
+	                join public.""InvoiceStates"" as states on invoice.""StateId"" = states.""Id""
+                );
+            ");
+
+            migrationBuilder.Sql(@"
+                create or replace view ""InvoicesLinesView"" as(
+                    select
+                    invoice_lines.""Id"",
+                    invoice_lines.""InvoiceId"",
+                    products.""Name"" as ""Product"",
+                    invoice_lines.""Description"",
+                    invoice_lines.""Quantity"",
+                    invoice_lines.""UnitPrice"",
+                    (invoice_lines.""Quantity"" * invoice_lines.""UnitPrice"") as ""Subtotal""
+                    from public.""InvoicesLines"" as invoice_lines
+                    join public.""Products"" as products on products.""Id"" = invoice_lines.""ProductId""
+                );
+            ");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -181,6 +259,29 @@ namespace intec_proyecto_final_t_3.Migrations
 
             migrationBuilder.DropTable(
                 name: "States");
+
+            migrationBuilder.Sql(@"
+                drop view public.""StatesView"";
+            ");
+
+            migrationBuilder.Sql(@"
+                drop view public.""CitiesView"";
+            ");
+
+            migrationBuilder.Sql(@"
+                drop view public.""CustomersView"";
+            ");
+
+            migrationBuilder.Sql(@"
+                drop view public.""InvoicesListView"";
+            ");
+
+
+            migrationBuilder.Sql(@"
+                drop view public.""InvoicesLinesView"";
+            ");
+
         }
+    
     }
 }
