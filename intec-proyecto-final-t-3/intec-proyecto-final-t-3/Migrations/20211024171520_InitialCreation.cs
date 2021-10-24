@@ -44,9 +44,9 @@ namespace intec_proyecto_final_t_3.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Street = table.Column<string>(type: "text", nullable: true),
                     Street2 = table.Column<string>(type: "text", nullable: true),
-                    CityId = table.Column<int>(type: "integer", nullable: false),
-                    StateId = table.Column<int>(type: "integer", nullable: false),
-                    CountryId = table.Column<int>(type: "integer", nullable: false),
+                    CityId = table.Column<int>(type: "integer", nullable: true),
+                    StateId = table.Column<int>(type: "integer", nullable: true),
+                    CountryId = table.Column<int>(type: "integer", nullable: true),
                     ZipCode = table.Column<string>(type: "text", nullable: true),
                     Phone = table.Column<string>(type: "text", nullable: true),
                     Mobile = table.Column<string>(type: "text", nullable: true),
@@ -65,12 +65,12 @@ namespace intec_proyecto_final_t_3.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CustomerId = table.Column<int>(type: "integer", nullable: false),
-                    StateId = table.Column<int>(type: "integer", nullable: false),
-                    DateInvoice = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    DateDue = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    AmountUntaxed = table.Column<double>(type: "double precision", nullable: false),
-                    AmountTax = table.Column<double>(type: "double precision", nullable: false),
-                    AmountTotal = table.Column<double>(type: "double precision", nullable: false)
+                    StateId = table.Column<int>(type: "integer", nullable: false, defaultValue: 1),
+                    DateInvoice = table.Column<DateTime>(type: "timestamp without time zone", nullable: true, defaultValue: "current_date"),
+                    DateDue = table.Column<DateTime>(type: "timestamp without time zone", nullable: true, defaultValue: "current_date + interval '7 days'"),
+                    AmountUntaxed = table.Column<double>(type: "double precision", nullable: true),
+                    AmountTax = table.Column<double>(type: "double precision", nullable: true),
+                    AmountTotal = table.Column<double>(type: "double precision", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -85,10 +85,10 @@ namespace intec_proyecto_final_t_3.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CustomerId = table.Column<int>(type: "integer", nullable: false),
                     ProductId = table.Column<int>(type: "integer", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: false),
-                    Quantity = table.Column<double>(type: "double precision", nullable: false),
-                    UnitPrice = table.Column<double>(type: "double precision", nullable: false),
-                    Subtotal = table.Column<double>(type: "double precision", nullable: false)
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Quantity = table.Column<double>(type: "double precision", nullable: false, defaultValue: 1),
+                    UnitPrice = table.Column<double>(type: "double precision", nullable: false, defaultValue: 1),
+                    Subtotal = table.Column<double>(type: "double precision", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,7 +116,7 @@ namespace intec_proyecto_final_t_3.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     InvoiceId = table.Column<int>(type: "integer", nullable: false),
                     Amount = table.Column<double>(type: "double precision", nullable: false),
-                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true, defaultValue: "current_date")
                 },
                 constraints: table =>
                 {
@@ -130,7 +130,7 @@ namespace intec_proyecto_final_t_3.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    cost = table.Column<double>(type: "double precision", nullable: false),
+                    cost = table.Column<double>(type: "double precision", nullable: true),
                     Price = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
