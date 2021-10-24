@@ -15,12 +15,12 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="CustomerId" class="control-label"></label>
-                <input asp-for="CustomerId" class="form-control" />
+                @Html.DropDownList("Customer", null, String.Empty, new { @class = "form-control" })
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="StateId" class="control-label"></label>
-                <input asp-for="StateId" class="form-control" />
+                @Html.DropDownList("State", null, String.Empty, new { @class = "form-control" })
                 <span asp-validation-for="StateId" class="text-danger"></span>
             </div>
             <div class="form-group">

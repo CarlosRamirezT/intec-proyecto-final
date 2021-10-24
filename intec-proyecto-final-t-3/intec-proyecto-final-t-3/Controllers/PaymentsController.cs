@@ -77,6 +77,7 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Invoice = new SelectList(_context.Invoices, "Id", "Id", payments.InvoiceId);
             return View(payments);
         }
 
@@ -96,6 +97,7 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 try
                 {
+                    payments.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
                     _context.Update(payments);
                     await _context.SaveChangesAsync();
                 }

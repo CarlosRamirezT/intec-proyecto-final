@@ -77,6 +77,7 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 return NotFound();
             }
+            ViewBag.State = new SelectList(_context.States, "Id", "Name", cities.StateId);
             return View(cities);
         }
 
@@ -96,6 +97,7 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 try
                 {
+                    cities.StateId = int.Parse(HttpContext.Request.Form["State"]);
                     _context.Update(cities);
                     await _context.SaveChangesAsync();
                 }

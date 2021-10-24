@@ -77,6 +77,9 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 return NotFound();
             }
+            ViewBag.City = new SelectList(_context.Cities, "Id", "Name", customers.CityId);
+            ViewBag.State = new SelectList(_context.States, "Id", "Name", customers.StateId);
+            ViewBag.Country = new SelectList(_context.Countries, "Id", "Name", customers.CountryId);
             return View(customers);
         }
 
@@ -96,6 +99,9 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 try
                 {
+                    customers.CityId = int.Parse(HttpContext.Request.Form["City"]);
+                    customers.StateId = int.Parse(HttpContext.Request.Form["State"]);
+                    customers.CountryId = int.Parse(HttpContext.Request.Form["Country"]);
                     _context.Update(customers);
                     await _context.SaveChangesAsync();
                 }

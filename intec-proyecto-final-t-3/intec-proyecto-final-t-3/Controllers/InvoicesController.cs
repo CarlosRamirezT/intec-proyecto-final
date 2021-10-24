@@ -77,6 +77,8 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 return NotFound();
             }
+            ViewBag.State = new SelectList(_context.InvoiceStates, "Id", "Name", invoices.StateId);
+            ViewBag.Customer = new SelectList(_context.Customers, "Id", "Name", invoices.CustomerId);
             return View(invoices);
         }
 
@@ -96,6 +98,8 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 try
                 {
+                    invoices.StateId = int.Parse(HttpContext.Request.Form["State"]);
+                    invoices.CustomerId = int.Parse(HttpContext.Request.Form["Customer"]);
                     _context.Update(invoices);
                     await _context.SaveChangesAsync();
                 }
