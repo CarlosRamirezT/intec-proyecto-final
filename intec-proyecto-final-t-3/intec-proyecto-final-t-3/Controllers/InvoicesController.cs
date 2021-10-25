@@ -71,7 +71,6 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 invoices.StateId = int.Parse(HttpContext.Request.Form["State"]);
                 invoices.CustomerId = int.Parse(HttpContext.Request.Form["Customer"]);
-                invoices.Id = 0;
                 _context.Add(invoices);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

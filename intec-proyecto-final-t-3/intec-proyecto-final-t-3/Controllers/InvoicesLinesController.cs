@@ -61,7 +61,6 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]);
                 invoicesLines.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
-                invoicesLines.Id = 0;
                 _context.Add(invoicesLines);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

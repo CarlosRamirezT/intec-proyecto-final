@@ -63,7 +63,6 @@ namespace intec_proyecto_final_t_3.Controllers
                 customers.CityId = int.Parse(HttpContext.Request.Form["City"]);
                 customers.StateId = int.Parse(HttpContext.Request.Form["State"]);
                 customers.CountryId = int.Parse(HttpContext.Request.Form["Country"]);
-                customers.Id = 0;
                 _context.Add(customers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -57,7 +57,6 @@ namespace intec_proyecto_final_t_3.Controllers
         {
             if (ModelState.IsValid)
             {
-                countries.Id = 0;
                 _context.Add(countries);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

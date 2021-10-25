@@ -229,6 +229,18 @@ namespace intec_proyecto_final_t_3.Migrations
                     join public.""Products"" as products on products.""Id"" = invoice_lines.""ProductId""
                 );
             ");
+
+            migrationBuilder.Sql(@"
+                ALTER TABLE public.""Countries"" ENABLE TRIGGER ALL;
+                ALTER TABLE public.""States"" ENABLE TRIGGER ALL; 
+                ALTER TABLE public.""Cities"" ENABLE TRIGGER ALL;
+                ALTER TABLE public.""Customers"" ENABLE TRIGGER ALL;
+                ALTER TABLE public.""InvoiceStates"" ENABLE TRIGGER ALL;
+                ALTER TABLE public.""Invoices"" ENABLE TRIGGER ALL;
+                ALTER TABLE public.""InvoicesLines"" ENABLE TRIGGER ALL;
+                ALTER TABLE public.""Payments"" ENABLE TRIGGER ALL;
+                ALTER TABLE public.""Products"" ENABLE TRIGGER ALL;  
+            ");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

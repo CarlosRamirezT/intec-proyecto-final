@@ -57,7 +57,6 @@ namespace intec_proyecto_final_t_3.Controllers
         {
             if (ModelState.IsValid)
             {
-                invoiceStates.Id = 0;
                 _context.Add(invoiceStates);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
