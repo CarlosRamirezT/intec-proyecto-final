@@ -212,7 +212,7 @@ namespace intec_proyecto_final_t_3.Controllers
                 return NotFound();
             }
 
-            var invoicesLines = await _context.InvoicesLines
+            var invoicesLines = await _context.InvoicesLinesView
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (invoicesLines == null)
             {
@@ -228,9 +228,10 @@ namespace intec_proyecto_final_t_3.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var invoicesLines = await _context.InvoicesLines.FindAsync(id);
+            int InvoiceId = invoicesLines.InvoiceId;
             _context.InvoicesLines.Remove(invoicesLines);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Invoices", new { id = InvoiceId });
         }
 
         private bool InvoicesLinesExists(int id)

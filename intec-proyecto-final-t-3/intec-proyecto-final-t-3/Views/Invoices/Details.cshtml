@@ -82,7 +82,7 @@
         <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">$ @line.Subtotal</a>
     </td>
     <td>
-        <a asp-controller="InvoicesLines" asp-action="DeleteFromInvoice" asp-route-id="@line.Id">Delete</a>
+        <a style="color: tomato;" asp-controller="InvoicesLines" asp-action="Delete" asp-route-id="@line.Id">Delete</a>
     </td>
 </tr>}
     </tbody>
