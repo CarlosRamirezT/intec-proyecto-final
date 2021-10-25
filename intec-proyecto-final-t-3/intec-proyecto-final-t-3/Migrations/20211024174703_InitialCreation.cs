@@ -204,10 +204,10 @@ namespace intec_proyecto_final_t_3.Migrations
                     invoice.""DateInvoice"",
                     invoice.""DateDue"",
                     states.""Name"" as ""State"",
-                    (select sum(""Subtotal"") from public.""InvoicesLines"" where ""InvoiceId"" = invoice.""Id"") as ""AmountUntaxed"",
-	                (""AmountUntaxed"" * 0.18) as ""AmountTax"",
-	                (""AmountUntaxed"" + ""AmountTax"") as ""AmountTotal"",
-	                (select sum(""Amount"") from public.""Payments"" where ""InvoiceId"" = invoice.""Id"") as ""AmountPaid"",
+                    (select coalesce(sum(""Subtotal""), 0) from public.""InvoicesLines"" where ""InvoiceId"" = invoice.""Id"") as ""AmountUntaxed"",
+	                (select coalesce(""AmountUntaxed"" * 0.18, 0)) as ""AmountTax"",
+	                (select coalesce(""AmountUntaxed"" + ""AmountTax"", 0)) as ""AmountTotal"",
+	                (select coalesce(sum(""Amount""), 0) from public.""Payments"" where ""InvoiceId"" = invoice.""Id"") as ""AmountPaid"",
 	                (select coalesce (""AmountTotal"" - (select sum(""Amount"") from public.""Payments"" where ""InvoiceId"" = invoice.""Id""), ""AmountTotal"")) as ""AmountDue""
 	                from public.""Invoices"" as invoice
                     join public.""Customers"" as customer on customer.""Id"" = invoice.""CustomerId""
@@ -224,7 +224,7 @@ namespace intec_proyecto_final_t_3.Migrations
                     invoice_lines.""Description"",
                     invoice_lines.""Quantity"",
                     invoice_lines.""UnitPrice"",
-                    (invoice_lines.""Quantity"" * invoice_lines.""UnitPrice"") as ""Subtotal""
+                    (select coalesce(invoice_lines.""Quantity"" * invoice_lines.""UnitPrice"", 0)) as ""Subtotal""
                     from public.""InvoicesLines"" as invoice_lines
                     join public.""Products"" as products on products.""Id"" = invoice_lines.""ProductId""
                 );
