@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using intec_proyecto_final_t_3.Models;
+using System.Dynamic;
 
 namespace intec_proyecto_final_t_3.Controllers
 {
@@ -34,12 +35,18 @@ namespace intec_proyecto_final_t_3.Controllers
 
             var invoices = await _context.InvoicesView
                 .FirstOrDefaultAsync(m => m.Id == id);
+            var invoiceLines = _context.InvoicesLinesView
+                .Where(line => line.InvoiceId == id);
+            dynamic expando = new ExpandoObject();
+            expando.invoice = invoices;
+            expando.lines = invoiceLines;
+
             if (invoices == null)
             {
                 return NotFound();
             }
 
-            return View(invoices);
+            return View(expando);
         }
 
         // GET: Invoices/Create

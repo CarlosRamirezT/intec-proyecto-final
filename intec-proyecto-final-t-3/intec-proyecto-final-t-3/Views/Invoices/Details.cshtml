@@ -1,4 +1,4 @@
-@model intec_proyecto_final_t_3.Models.InvoicesView
+@model dynamic
 
 @{
     ViewData["Title"] = "Invoices";
@@ -8,53 +8,95 @@
 
 <div>
     <h4>Invoices</h4>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.invoice.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Customer
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer)
+        <dd class="col-sm-10">
+            @Model.invoice.Customer
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             State
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.State)
+        <dd class="col-sm-10">
+            @Model.invoice.State
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Date Invoiced
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateInvoice)
+        <dd class="col-sm-10">
+            @Model.invoice.DateInvoice
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Date Due
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateDue)
+        <dd class="col-sm-10">
+            @Model.invoice.DateDue
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Amount Untaxed
         </dt>
-        <dd class = "col-sm-10">
-            $ @Html.DisplayFor(model => model.AmountUntaxed)
+        <dd class="col-sm-10">
+            @Model.invoice.AmountUntaxed
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Amount Tax
         </dt>
-        <dd class = "col-sm-10">
-            $ @Html.DisplayFor(model => model.AmountTax)
+        <dd class="col-sm-10">
+            @Model.invoice.AmountTax
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Amount Total
         </dt>
-        <dd class = "col-sm-10">
-            $ @Html.DisplayFor(model => model.AmountTotal)
+        <dd class="col-sm-10">
+            @Model.invoice.AmountTotal
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Unit Price
+            </th>
+            <th>
+                Subtotal
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (InvoicesLinesView line in Model.lines)
+        {
+        <tr>
+            <td>
+                @line.Product
+            </td>
+            <td>
+                @line.Description
+            </td>
+            <td>
+                @line.Quantity
+            </td>
+            <td>
+                @line.UnitPrice
+            </td>
+            <td>
+                @line.Subtotal
+            </td>
+        </tr>}
+    </tbody>
+</table>
