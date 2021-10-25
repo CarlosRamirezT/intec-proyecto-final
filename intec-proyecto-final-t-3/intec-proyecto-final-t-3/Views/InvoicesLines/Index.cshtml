@@ -1,4 +1,4 @@
-@model IEnumerable<intec_proyecto_final_t_3.Models.InvoicesLines>
+@model List<intec_proyecto_final_t_3.Models.InvoicesLinesView>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,22 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.InvoiceId)
+                Invoice
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductId)
+                Product
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Description
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                Quantity
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UnitPrice)
+                Unit Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Subtotal)
+                Subtotal
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.InvoiceId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductId)
+                @Html.DisplayFor(modelItem => item.Product)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

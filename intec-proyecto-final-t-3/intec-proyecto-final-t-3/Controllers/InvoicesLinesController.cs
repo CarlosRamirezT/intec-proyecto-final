@@ -21,7 +21,7 @@ namespace intec_proyecto_final_t_3.Controllers
         // GET: InvoicesLines
         public async Task<IActionResult> Index()
         {
-            return View(await _context.InvoicesLines.ToListAsync());
+            return View(await _context.InvoicesLinesView.ToListAsync());
         }
 
         // GET: InvoicesLines/Details/5

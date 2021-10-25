@@ -21,7 +21,7 @@ namespace intec_proyecto_final_t_3.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Customers.ToListAsync());
+            return View(await _context.CustomersView.ToListAsync());
         }
 
         // GET: Customers/Details/5

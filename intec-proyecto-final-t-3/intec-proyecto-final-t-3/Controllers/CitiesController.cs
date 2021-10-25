@@ -21,7 +21,7 @@ namespace intec_proyecto_final_t_3.Controllers
         // GET: Cities
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cities.ToListAsync());
+            return View(await _context.CitiesView.ToListAsync());
         }
 
         // GET: Cities/Details/5

@@ -1,4 +1,4 @@
-@model IEnumerable<intec_proyecto_final_t_3.Models.Invoices>
+@model List<intec_proyecto_final_t_3.Models.InvoicesView>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,25 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CustomerId)
+                Customer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StateId)
+                State
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateInvoice)
+                Date Due
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateDue)
+                Total
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AmountUntaxed)
+                Paid
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AmountTax)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AmountTotal)
+                Due
             </th>
             <th></th>
         </tr>
@@ -40,25 +37,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerId)
+                @Html.DisplayFor(modelItem => item.Customer)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StateId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateInvoice)
+                @Html.DisplayFor(modelItem => item.State)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateDue)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AmountUntaxed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmountTax)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.AmountTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountPaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountDue)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

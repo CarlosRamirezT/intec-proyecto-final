@@ -35,7 +35,7 @@ namespace intec_proyecto_final_t_3.Models
     public class InvoicesView
     {
         public Int32 Id { get; set; }
-        public String Name { get; set; }
+        public String Customer { get; set; }
         public DateTime DateInvoice { get; set; }
         public DateTime DateDue { get; set; }
         public String State { get; set; }
