@@ -33,7 +33,7 @@ namespace intec_proyecto_final_t_3.Controllers
                 return NotFound();
             }
 
-            var states = await _context.States
+            var states = await _context.AddressStatesView
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (states == null)
             {

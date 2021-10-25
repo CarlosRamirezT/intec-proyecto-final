@@ -32,7 +32,7 @@ namespace intec_proyecto_final_t_3.Controllers
                 return NotFound();
             }
 
-            var cities = await _context.Cities
+            var cities = await _context.CitiesView
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (cities == null)
             {

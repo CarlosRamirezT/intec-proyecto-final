@@ -32,7 +32,7 @@ namespace intec_proyecto_final_t_3.Controllers
                 return NotFound();
             }
 
-            var customers = await _context.Customers
+            var customers = await _context.CustomersView
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (customers == null)
             {

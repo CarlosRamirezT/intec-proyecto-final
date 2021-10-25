@@ -32,7 +32,7 @@ namespace intec_proyecto_final_t_3.Controllers
                 return NotFound();
             }
 
-            var invoicesLines = await _context.InvoicesLines
+            var invoicesLines = await _context.InvoicesLinesView
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (invoicesLines == null)
             {

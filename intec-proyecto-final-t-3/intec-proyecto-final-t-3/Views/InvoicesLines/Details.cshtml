@@ -1,4 +1,4 @@
-@model intec_proyecto_final_t_3.Models.InvoicesLines
+@model intec_proyecto_final_t_3.Models.InvoicesLinesView
 
 @{
     ViewData["Title"] = "Invoice Lines";
@@ -11,40 +11,40 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InvoiceId)
+            Invoice
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.InvoiceId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductId)
+            Product
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProductId)
+            @Html.DisplayFor(model => model.Product)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            Description
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
+            Quantity
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UnitPrice)
+            Unit Price
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UnitPrice)
+            $ @Html.DisplayFor(model => model.UnitPrice)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Subtotal)
+            Subtotal
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Subtotal)
+            $ @Html.DisplayFor(model => model.Subtotal)
         </dd>
     </dl>
 </div>

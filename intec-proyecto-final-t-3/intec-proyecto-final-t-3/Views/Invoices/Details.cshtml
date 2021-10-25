@@ -1,4 +1,4 @@
-@model intec_proyecto_final_t_3.Models.Invoices
+@model intec_proyecto_final_t_3.Models.InvoicesView
 
 @{
     ViewData["Title"] = "Invoices";
@@ -11,46 +11,46 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerId)
+            Customer
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CustomerId)
+            @Html.DisplayFor(model => model.Customer)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StateId)
+            State
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StateId)
+            @Html.DisplayFor(model => model.State)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateInvoice)
+            Date Invoiced
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DateInvoice)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateDue)
+            Date Due
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DateDue)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AmountUntaxed)
+            Amount Untaxed
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AmountUntaxed)
+            $ @Html.DisplayFor(model => model.AmountUntaxed)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AmountTax)
+            Amount Tax
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AmountTax)
+            $ @Html.DisplayFor(model => model.AmountTax)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AmountTotal)
+            Amount Total
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AmountTotal)
+            $ @Html.DisplayFor(model => model.AmountTotal)
         </dd>
     </dl>
 </div>

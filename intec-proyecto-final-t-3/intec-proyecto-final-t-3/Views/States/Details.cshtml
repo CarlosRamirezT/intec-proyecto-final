@@ -1,4 +1,4 @@
-@model intec_proyecto_final_t_3.Models.States
+@model intec_proyecto_final_t_3.Models.AddressStatesView
 
 @{
     ViewData["Title"] = "Details";
@@ -11,16 +11,16 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CountryId)
+            Country
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CountryId)
+            @Html.DisplayFor(model => model.Country)
         </dd>
     </dl>
 </div>
