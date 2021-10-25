@@ -15,6 +15,13 @@ namespace intec_proyecto_final_t_3.Models
         public DbSet<InvoicesLines> InvoicesLines { get; set; }
         public DbSet<Payments> Payments { get; set; }
         public DbSet<InvoiceStates> InvoiceStates { get; set; }
+
+        public DbSet<AddressStatesView> AddressStatesView { get; set; }
+        public DbSet<CitiesView> CitiesView { get; set; }
+        public DbSet<CustomersView> CustomersView { get; set; }
+        public DbSet<InvoicesView> InvoicesView { get; set; }
+        public DbSet<InvoicesLinesView> InvoicesLinesView { get; set; }
+
         public GeneralDbContext(DbContextOptions<GeneralDbContext> options) : base(options)
         {
         }

@@ -153,7 +153,7 @@ namespace intec_proyecto_final_t_3.Migrations
                 });
 
             migrationBuilder.Sql(@"
-                create or replace view ""StatesView"" as (
+                create or replace view ""AddressStatesView"" as (
                     select
                     states.""Id"",
                     states.""Name"",
@@ -197,7 +197,7 @@ namespace intec_proyecto_final_t_3.Migrations
             ");
 
             migrationBuilder.Sql(@"
-                create or replace view ""InvoicesListView"" as(
+                create or replace view ""InvoicesView"" as(
                     select
                     invoice.""Id"",
                     customer.""Name"" as ""Customer"",
@@ -261,7 +261,7 @@ namespace intec_proyecto_final_t_3.Migrations
                 name: "States");
 
             migrationBuilder.Sql(@"
-                drop view public.""StatesView"";
+                drop view public.""AddressStatesView"";
             ");
 
             migrationBuilder.Sql(@"
@@ -273,7 +273,7 @@ namespace intec_proyecto_final_t_3.Migrations
             ");
 
             migrationBuilder.Sql(@"
-                drop view public.""InvoicesListView"";
+                drop view public.""InvoicesView"";
             ");
 
 

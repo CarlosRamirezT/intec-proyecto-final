@@ -243,6 +243,32 @@ namespace intec_proyecto_final_t_3.Migrations
 
                     b.ToTable("States");
                 });
+
+            modelBuilder
+                .Entity<AddressStatesView>()
+                .ToView(nameof(AddressStatesView))
+                .HasKey(t => t.Id);
+
+            modelBuilder
+                .Entity<CitiesView>()
+                .ToView(nameof(CitiesView))
+                .HasKey(t => t.Id);
+
+            modelBuilder
+                .Entity<CustomersView>()
+                .ToView(nameof(CustomersView))
+                .HasKey(t => t.Id);
+
+            modelBuilder
+                .Entity<InvoicesView>()
+                .ToView(nameof(InvoicesView))
+                .HasKey(t => t.Id);
+
+            modelBuilder
+                .Entity<InvoicesLinesView>()
+                .ToView(nameof(InvoicesLinesView))
+                .HasKey(t => t.Id);
+
 #pragma warning restore 612, 618
         }
     }

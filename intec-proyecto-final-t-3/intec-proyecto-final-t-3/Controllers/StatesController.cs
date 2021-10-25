@@ -22,7 +22,7 @@ namespace intec_proyecto_final_t_3.Controllers
         // GET: States
         public async Task<IActionResult> Index()
         {
-            return View(await _context.States.ToListAsync());
+            return View(await _context.AddressStatesView.ToListAsync());
         }
 
         // GET: States/Details/5
