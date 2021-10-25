@@ -58,29 +58,33 @@
             <th>
                 Subtotal
             </th>
+            <th/>
         </tr>
     </thead>
+    <a asp-controller="InvoicesLines" asp-action="CreateFromInvoice" asp-route-id="@Model.invoice.Id">Add new line</a>
     <tbody>
         @foreach (InvoicesLinesView line in Model.lines)
         {
-           <tr>
-                <td>
-                    <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">@line.Product</a>       
-                </td>
-                <td>
-                    <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">@line.Description</a>
-                </td>
-                <td>
-                    <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">@line.Quantity</a>
-                </td>
-                <td>
-                    <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">$ @line.UnitPrice</a>
-                </td>
-                <td>
-                    <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">$ @line.Subtotal</a>
-                </td>
-            </tr>
-}
+<tr>
+    <td>
+        <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">@line.Product</a>
+    </td>
+    <td>
+        <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">@line.Description</a>
+    </td>
+    <td>
+        <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">@line.Quantity</a>
+    </td>
+    <td>
+        <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">$ @line.UnitPrice</a>
+    </td>
+    <td>
+        <a asp-controller="InvoicesLines" asp-action="EditFromInvoice" asp-route-id="@line.Id">$ @line.Subtotal</a>
+    </td>
+    <td>
+        <a asp-controller="InvoicesLines" asp-action="DeleteFromInvoice" asp-route-id="@line.Id">Delete</a>
+    </td>
+</tr>}
     </tbody>
 </table>
 <div style="display: flex;justify-content: right;">

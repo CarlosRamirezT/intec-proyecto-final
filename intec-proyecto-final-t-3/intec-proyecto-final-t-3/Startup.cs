@@ -59,8 +59,12 @@ namespace intec_proyecto_final_t_3
                     pattern: "{controller=InvoicesLines}/{action=EditFromInvoice}/{id?}"
                 );
                 endpoints.MapControllerRoute(
+                    name: "createlinefrominvoice",
+                    pattern: "{controller=InvoiceLines}/{action=CreateFromInvoice}/{InvoiceId?}"
+                );
+                endpoints.MapControllerRoute(
                     name: "createpaymentfrominvoice",
-                    pattern: "{controller=Payments}/{action=CreateFromInvoice}/{id?}"
+                    pattern: "{controller=Payments}/{action=CreateFromInvoice}/{InvoiceId?}"
                 );
             });
         }

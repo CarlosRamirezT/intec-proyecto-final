@@ -45,6 +45,8 @@ namespace intec_proyecto_final_t_3.Controllers
         // GET: InvoicesLines/Create
         public IActionResult Create()
         {
+            ViewBag.Product = new SelectList(_context.Products, "Id", "Name", 1);
+            ViewBag.Invoice = new SelectList(_context.Invoices, "Id", "Id", 1);
             return View();
         }
 
@@ -57,11 +59,41 @@ namespace intec_proyecto_final_t_3.Controllers
         {
             if (ModelState.IsValid)
             {
+                invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]);
+                invoicesLines.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
+                invoicesLines.Id = 0;
                 _context.Add(invoicesLines);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(invoicesLines);
+            return RedirectToAction("Details", "Invoices", new { id = invoicesLines.InvoiceId });
+        }
+
+        // GET: InvoicesLines/CreateFromInvoice
+        public IActionResult CreateFromInvoice(int id)
+        {
+            ViewBag.Product = new SelectList(_context.Products, "Id", "Name", 1);
+            ViewBag.Invoice = new SelectList(_context.Invoices, "Id", "Id", id);
+            return View();
+        }
+
+        // POST: InvoicesLines/CreateFromInvoice
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateFromInvoice([Bind("InvoiceId,CustomerId,ProductId,Description,Quantity,UnitPrice,Subtotal")] InvoicesLines invoicesLines)
+        {
+            if (ModelState.IsValid)
+            {
+                invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]);
+                invoicesLines.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
+                invoicesLines.Id = 0;
+                _context.Add(invoicesLines);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Details", "Invoices", new { id = invoicesLines.InvoiceId });
+            }
+            return RedirectToAction("Details", "Invoices", new { id = invoicesLines.InvoiceId });
         }
 
         // GET: InvoicesLines/Edit/5
