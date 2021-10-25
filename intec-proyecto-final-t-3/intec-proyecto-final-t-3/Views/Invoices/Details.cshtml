@@ -38,24 +38,6 @@
         <dd class="col-sm-10">
             @Model.invoice.DateDue
         </dd>
-        <dt class="col-sm-2">
-            Amount Untaxed
-        </dt>
-        <dd class="col-sm-10">
-            $ @Model.invoice.AmountUntaxed
-        </dd>
-        <dt class="col-sm-2">
-            Amount Tax
-        </dt>
-        <dd class="col-sm-10">
-            $ @Model.invoice.AmountTax
-        </dd>
-        <dt class="col-sm-2">
-            Amount Total
-        </dt>
-        <dd class="col-sm-10">
-            $ @Model.invoice.AmountTotal
-        </dd>
     </dl>
 </div>
 <table class="table">
@@ -100,3 +82,37 @@
         </tr>}
     </tbody>
 </table>
+<div style="display: flex;justify-content: right;">
+    <table>
+        <tbody>
+            <tr>
+                <th style="padding: 0 15px 0 0">
+                    Amount Untaxed
+                </th>
+                <td />
+                <td>
+                    $ @Model.invoice.AmountUntaxed
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Amount Tax
+                </th>
+                <td />
+                <td>
+                    $ @Model.invoice.AmountTax
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Amount Total
+                </th>
+                <td/>
+                <td>
+                    $ @Model.invoice.AmountTotal
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
