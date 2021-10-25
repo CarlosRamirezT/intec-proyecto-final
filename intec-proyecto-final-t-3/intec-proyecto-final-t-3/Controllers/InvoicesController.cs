@@ -37,9 +37,12 @@ namespace intec_proyecto_final_t_3.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             var invoiceLines = _context.InvoicesLinesView
                 .Where(line => line.InvoiceId == id);
+            var payments = _context.Payments
+                .Where(line => line.InvoiceId == id);
             dynamic expando = new ExpandoObject();
             expando.invoice = invoices;
             expando.lines = invoiceLines;
+            expando.payments = payments;
 
             if (invoices == null)
             {
