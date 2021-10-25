@@ -13,6 +13,11 @@
         <form asp-action="EditFromInvoice">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <div class="form-group" style="visibility: hidden;">
+                <label asp-for="InvoiceId" class="control-label"></label>
+                @Html.DropDownList("Invoice", ViewBag.Invoice, String.Empty, new { @class = "form-control" })
+                <span asp-validation-for="InvoiceId" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="ProductId" class="control-label"></label>
                 @Html.DropDownList("Product", ViewBag.Product, String.Empty, new { @class = "form-control" })
@@ -32,11 +37,6 @@
                 <label asp-for="UnitPrice" class="control-label"></label>
                 <input asp-for="UnitPrice" class="form-control" />
                 <span asp-validation-for="UnitPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Subtotal" class="control-label"></label>
-                <input asp-for="Subtotal" class="form-control" />
-                <span asp-validation-for="Subtotal" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

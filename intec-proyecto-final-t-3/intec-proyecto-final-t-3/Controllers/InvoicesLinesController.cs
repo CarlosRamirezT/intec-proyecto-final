@@ -61,6 +61,8 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]);
                 invoicesLines.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
+                Products product = await _context.Products.FindAsync(invoicesLines.ProductId);
+                invoicesLines.UnitPrice = product.Price;
                 _context.Add(invoicesLines);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -87,7 +89,8 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]);
                 invoicesLines.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
-                invoicesLines.Id = 0;
+                Products product = await _context.Products.FindAsync(invoicesLines.ProductId);
+                invoicesLines.UnitPrice = product.Price;
                 _context.Add(invoicesLines);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", "Invoices", new { id = invoicesLines.InvoiceId });
@@ -177,12 +180,11 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]); ;
+                    invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]);
                     invoicesLines.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
                     _context.Update(invoicesLines);
                     await _context.SaveChangesAsync();
