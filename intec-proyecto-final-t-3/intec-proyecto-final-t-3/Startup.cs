@@ -54,6 +54,14 @@ namespace intec_proyecto_final_t_3
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "updatelinefrominvoice",
+                    pattern: "{controller=InvoicesLines}/{action=EditFromInvoice}/{id?}"
+                );
+                endpoints.MapControllerRoute(
+                    name: "createpaymentfrominvoice",
+                    pattern: "{controller=Payments}/{action=CreateFromInvoice}/{id?}"
+                );
             });
         }
     }

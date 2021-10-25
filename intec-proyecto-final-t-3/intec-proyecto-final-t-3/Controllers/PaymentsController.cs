@@ -48,6 +48,12 @@ namespace intec_proyecto_final_t_3.Controllers
             return View();
         }
 
+        // GET: Payments/CreateFromInvoice/1
+        public IActionResult CreateFromInvoice(int? invoiceId)
+        {
+            return View();
+        }
+
         // POST: Payments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

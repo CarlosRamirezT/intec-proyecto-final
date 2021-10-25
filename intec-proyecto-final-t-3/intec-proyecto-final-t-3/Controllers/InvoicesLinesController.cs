@@ -77,6 +77,8 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Product = new SelectList(_context.Products, "Id", "Name", invoicesLines.ProductId);
+            ViewBag.Invoice = new SelectList(_context.Invoices, "Id", "Id", invoicesLines.InvoiceId);
             return View(invoicesLines);
         }
 
@@ -96,6 +98,8 @@ namespace intec_proyecto_final_t_3.Controllers
             {
                 try
                 {
+                    invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]);
+                    invoicesLines.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
                     _context.Update(invoicesLines);
                     await _context.SaveChangesAsync();
                 }
@@ -113,6 +117,59 @@ namespace intec_proyecto_final_t_3.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(invoicesLines);
+        }
+
+        // GET: tutisfrutis/Edit//Line/2
+        public async Task<IActionResult> EditFromInvoice(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var invoicesLines = await _context.InvoicesLines.FindAsync(id);
+            if (invoicesLines == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Product = new SelectList(_context.Products, "Id", "Name", invoicesLines.ProductId);
+            ViewBag.Invoice = new SelectList(_context.Invoices, "Id", "Id", invoicesLines.InvoiceId);
+            return View(invoicesLines);
+        }
+
+        // POST: tutisfrutis/Edit/Line/2
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditFromInvoice(int id, [Bind("Id,InvoiceId,ProductId,Description,Quantity,UnitPrice,Subtotal")] InvoicesLines invoicesLines)
+        {
+            if (id != invoicesLines.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    invoicesLines.ProductId = int.Parse(HttpContext.Request.Form["Product"]); ;
+                    invoicesLines.InvoiceId = int.Parse(HttpContext.Request.Form["Invoice"]);
+                    _context.Update(invoicesLines);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!InvoicesLinesExists(invoicesLines.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Details", "Invoices", new { id = invoicesLines.InvoiceId });
+            }
+            return RedirectToAction("Details", "Invoices", new { id = invoicesLines.InvoiceId });
         }
 
         // GET: InvoicesLines/Delete/5
