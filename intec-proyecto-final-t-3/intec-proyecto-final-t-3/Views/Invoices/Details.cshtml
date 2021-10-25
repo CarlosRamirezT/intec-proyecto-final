@@ -107,9 +107,35 @@
                 <th>
                     Amount Total
                 </th>
-                <td/>
+                <td />
                 <td>
                     $ @Model.invoice.AmountTotal
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style="display: flex;justify-content: right;">
+    <table>
+        <tbody>
+            <tr style="padding: 0 15px 0 0">
+                <th>
+                    Amount Paid
+                </th>
+                <td />
+                <td>
+                    $ @Model.invoice.AmountPaid
+                </td>
+
+            </tr>
+            <tr>
+                <th>
+                    Amount Due
+                </th>
+                <td />
+                <td>
+                    $ @Model.invoice.AmountDue
                 </td>
 
             </tr>
