@@ -45,6 +45,9 @@ namespace intec_proyecto_final_t_3.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
+            ViewBag.City = new SelectList(_context.Cities, "Id", "Name", 1);
+            ViewBag.State = new SelectList(_context.States, "Id", "Name", 1);
+            ViewBag.Country = new SelectList(_context.Countries, "Id", "Name", 1);
             return View();
         }
 
@@ -57,6 +60,10 @@ namespace intec_proyecto_final_t_3.Controllers
         {
             if (ModelState.IsValid)
             {
+                customers.CityId = int.Parse(HttpContext.Request.Form["City"]);
+                customers.StateId = int.Parse(HttpContext.Request.Form["State"]);
+                customers.CountryId = int.Parse(HttpContext.Request.Form["Country"]);
+                customers.Id = 0;
                 _context.Add(customers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -45,6 +45,7 @@ namespace intec_proyecto_final_t_3.Controllers
         // GET: Cities/Create
         public IActionResult Create()
         {
+            ViewBag.State = new SelectList(_context.States, "Id", "Name", 1);
             return View();
         }
 
@@ -57,6 +58,8 @@ namespace intec_proyecto_final_t_3.Controllers
         {
             if (ModelState.IsValid)
             {
+                cities.StateId = int.Parse(HttpContext.Request.Form["State"]);
+                cities.Id = 0;
                 _context.Add(cities);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

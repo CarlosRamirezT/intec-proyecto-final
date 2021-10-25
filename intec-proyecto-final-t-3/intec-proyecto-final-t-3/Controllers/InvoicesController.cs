@@ -55,6 +55,8 @@ namespace intec_proyecto_final_t_3.Controllers
         // GET: Invoices/Create
         public IActionResult Create()
         {
+            ViewBag.State = new SelectList(_context.InvoiceStates, "Id", "Name", 1);
+            ViewBag.Customer = new SelectList(_context.Customers, "Id", "Name", 1);
             return View();
         }
 
@@ -67,6 +69,9 @@ namespace intec_proyecto_final_t_3.Controllers
         {
             if (ModelState.IsValid)
             {
+                invoices.StateId = int.Parse(HttpContext.Request.Form["State"]);
+                invoices.CustomerId = int.Parse(HttpContext.Request.Form["Customer"]);
+                invoices.Id = 0;
                 _context.Add(invoices);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
